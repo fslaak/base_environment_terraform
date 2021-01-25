@@ -1,0 +1,12 @@
+##### File is managed by Salt #######
+## Local changes will be overwritten during ##
+## the next salt run!                       ##
+
+{%- if salt['pillar.get']('enable_hosts_deny') %}
+{%-   set wrappers = salt['pillar.get']('hosts_deny') %}
+{%-   for wrapper, net in wrappers.items() %}
+{{ wrapper }}: {%- for item in net %}{%- if loop.last %} {{ item }}{%- else %} {{ item }},{% endif %}{%- endfor %}
+{%-   endfor %}
+{%-   else %}
+# Hosts deny not configured
+{%- endif %}
