@@ -4,6 +4,8 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
+  aws_access_key_id="AKIASAI5KDNJJY6SMSYN"
+  aws_secret_access_key="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"
 }
 
 resource "aws_organizations_account" "account" {
